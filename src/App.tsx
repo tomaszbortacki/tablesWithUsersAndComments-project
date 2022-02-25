@@ -1,25 +1,12 @@
-import React, { FC, useEffect, useState } from "react";
-import { getComments, getUsers } from "./api";
+import React, { FC } from "react";
 import Table from "./components/table/Table";
-import { CommentsT, UsersT } from "./model";
-import { v4 } from "uuid";
-
-type dataT = Partial<Array<UsersT | CommentsT>>;
+import { ApiUrlsTypes } from "./constants";
 
 const App: FC = () => {
-  const [data, setData] = useState<dataT>([]);
-
-  useEffect(() => {
-    Promise.all([getUsers(), getComments()]).then((resp) => {
-      setData(() => resp.map((values) => values.data));
-    });
-  }, []);
-
   return (
     <section className="app">
-      {data.map((item) => (
-        <Table data={item} key={v4()} />
-      ))}
+      <Table type={ApiUrlsTypes.USERS} />
+      {/* <Table type={ApiUrlsTypes.COMMENTS} /> */}
     </section>
   );
 };

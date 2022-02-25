@@ -1,23 +1,42 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { v4 } from "uuid";
+import { getComments, getUsers } from "../../api";
+import { ApiUrls, ApiUrlsTypes } from "../../constants";
 import { CommentsT, UsersT } from "../../model";
 import Row from "../row/Row";
 
 interface PropsI {
-  data: Array<UsersT | CommentsT>;
+  type: keyof typeof ApiUrls;
 }
 
-const Table: FC<PropsI> = ({ data }) => {
+const Table: FC<PropsI> = ({ type }) => {
+  const [data, setData] = useState<Array<UsersT | CommentsT>>([]);
+
   useEffect(() => {
-    console.log(data);
+    switch (type) {
+      case ApiUrlsTypes.USERS:
+        getUsers().then(({ data }) => {
+          setData(() => data);
+        });
+        break;
+      case ApiUrlsTypes.COMMENTS:
+        getComments().then(({ data }) => {
+          setData(() => data);
+        });
+        break;
+    }
   }, []);
 
   return data.length ? (
-    <table>
+    <table className="table">
       <thead>
         <Row head={true} data={Object.keys(data[0])} />
       </thead>
-      <tbody>{/* {data.map(item => item.email)} */}</tbody>
+      <tbody>
+        {data.map((item) => (
+          <Row head={false} data={item} key={v4()} />
+        ))}
+      </tbody>
     </table>
   ) : null;
 };
