@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { v4 } from "uuid";
-import { CommentsT, dataStructureT, UsersT } from "../../model";
+import { dataStructureT } from "../../../model";
 import Column from "../column/Column";
 
 interface PropsI {

@@ -1,0 +1,13 @@
+@use "./colors" as colors;
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: colors.$backgroundColor;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: colors.$lightGreen;
+    border-radius: 5px;
+  }
+}

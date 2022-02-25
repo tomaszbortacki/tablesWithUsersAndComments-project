@@ -1,26 +1,27 @@
 import React, { FC, useEffect, useState } from "react";
 import { v4 } from "uuid";
-import { getComments, getUsers } from "../../api";
+import { getData } from "../../api";
 import { ApiUrls, ApiUrlsTypes } from "../../constants";
-import { CommentsT, UsersT } from "../../model";
-import Row from "../row/Row";
+import { dataT } from "../../model";
+import Row from "./row/Row";
+import "./table.scss";
 
 interface PropsI {
   type: keyof typeof ApiUrls;
 }
 
 const Table: FC<PropsI> = ({ type }) => {
-  const [data, setData] = useState<Array<UsersT | CommentsT>>([]);
+  const [data, setData] = useState<Array<dataT>>([]);
 
   useEffect(() => {
     switch (type) {
       case ApiUrlsTypes.USERS:
-        getUsers().then(({ data }) => {
+        getData(ApiUrls.USERS).then(({ data }) => {
           setData(() => data);
         });
         break;
       case ApiUrlsTypes.COMMENTS:
-        getComments().then(({ data }) => {
+        getData(ApiUrls.COMMENTS).then(({ data }) => {
           setData(() => data);
         });
         break;

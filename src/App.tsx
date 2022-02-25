@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Table from "./components/table/Table";
 import { ApiUrlsTypes } from "./constants";
+import "./app.scss";
 
 const App: FC = () => {
   return (

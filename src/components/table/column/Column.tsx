@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { dataStructureT } from "../../model";
-import ConcateKeysWithValues from "../concateKeysWithValues/ConcateKeysWithValues";
+import { dataStructureT } from "../../../model";
+import ConcateKeysWithValues from "../../../common/components/concateKeysWithValues/ConcateKeysWithValues";
 
 interface PropsI {
   head: boolean;
