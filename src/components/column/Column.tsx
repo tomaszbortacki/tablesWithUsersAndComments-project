@@ -1,18 +1,14 @@
-import React, { FC, useEffect } from "react";
-import Row from "../row/Row";
-import Table from "../table/Table";
+import React, { FC } from "react";
+import { dataStructureT } from "../../model";
+import ConcateKeysWithValues from "../concateKeysWithValues/ConcateKeysWithValues";
 
 interface PropsI {
   head: boolean;
-  info: string | object;
+  info: dataStructureT;
 }
 
 const Column: FC<PropsI> = ({ head, info }) => {
-  useEffect(() => {
-    // console.log(info);
-  }, []);
-
-  return head ? <th>{info}</th> : <td></td>;
+  return head ? <th>{info}</th> : <td>{typeof info === "object" ? <ConcateKeysWithValues data={Object.entries(info)} /> : info}</td>;
 };
 
 export default Column;

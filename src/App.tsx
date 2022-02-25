@@ -6,7 +6,7 @@ const App: FC = () => {
   return (
     <section className="app">
       <Table type={ApiUrlsTypes.USERS} />
-      {/* <Table type={ApiUrlsTypes.COMMENTS} /> */}
+      <Table type={ApiUrlsTypes.COMMENTS} />
     </section>
   );
 };

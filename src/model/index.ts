@@ -29,3 +29,5 @@ interface CommentI {
 export type UsersT = Array<UserI>;
 
 export type CommentsT = Array<CommentI>;
+
+export type dataStructureT = string | number | object;
