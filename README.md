@@ -1,6 +1,6 @@
 # Tables
 
-Fetching data from different locations and create table with data, that comes front that
+Fetching data from different locations and create table with data, that comes from that
 
 ## Used technologies:
 
