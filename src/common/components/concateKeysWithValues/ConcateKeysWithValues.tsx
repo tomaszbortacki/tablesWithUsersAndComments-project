@@ -16,8 +16,12 @@ const ConcateKeysWithValues: FC<PropsI> = ({ data }) => {
     <ul>
       {data.map((entry) => (
         <li key={v4()}>
-          <strong>{entry[Entry.KEY]}</strong>
-          {typeof entry[Entry.VALUE] === "object" ? <ConcateKeysWithValues data={Object.entries(entry[Entry.VALUE])} /> : entry[Entry.VALUE]}
+          <strong>{entry[Entry.KEY]}:&nbsp;</strong>
+          {typeof entry[Entry.VALUE] === "object" ? (
+            <ConcateKeysWithValues data={Object.entries(entry[Entry.VALUE])} />
+          ) : (
+            entry[Entry.VALUE]
+          )}
         </li>
       ))}
     </ul>
