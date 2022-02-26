@@ -14,18 +14,9 @@ const Table: FC<PropsI> = ({ type }) => {
   const [data, setData] = useState<Array<dataT>>([]);
 
   useEffect(() => {
-    switch (type) {
-      case ApiUrlsTypes.USERS:
-        getData(ApiUrls.USERS).then(({ data }) => {
-          setData(() => data);
-        });
-        break;
-      case ApiUrlsTypes.COMMENTS:
-        getData(ApiUrls.COMMENTS).then(({ data }) => {
-          setData(() => data);
-        });
-        break;
-    }
+    getData(ApiUrls[type]).then(({ data }) => {
+      setData(() => data);
+    });
   }, []);
 
   return data.length ? (
