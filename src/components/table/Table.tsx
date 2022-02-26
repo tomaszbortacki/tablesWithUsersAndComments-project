@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { getData } from "../../api";
-import { ApiUrls, ApiUrlsTypes } from "../../constants";
+import { ApiUrls } from "../../constants";
 import { dataT } from "../../model";
 import Row from "./row/Row";
 import "./table.scss";
