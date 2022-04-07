@@ -15,7 +15,6 @@ const ConcatenatedList = ({ data }: Props) => {
     <ul>
       {Object.entries(data).map((entry, index) => (
         <li key={index}>
-          {() => console.log(entry)}
           <strong>{entry[Entry.KEY]}:&nbsp;</strong>
           {entry[Entry.VALUE] ? (
             typeof entry[Entry.VALUE] === "object" ? (
