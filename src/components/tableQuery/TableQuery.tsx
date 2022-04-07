@@ -19,10 +19,12 @@ const TableQuery = ({ endpoint }: Props) => {
     setLoading(true);
     getData(endpoint, page)
       .then(({ data }) => {
-        setData(data);
-        if (!data.length && page > 1) {
+        if ((!data || !data.length) && page > 1) {
           setPage((prevState) => prevState - 1);
+          return;
         }
+
+        setData(data);
         setLoading(false);
       })
       .catch((error) => console.error(error));
