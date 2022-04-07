@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
-import { v4 } from "uuid";
 import { getData } from "../../api";
 import { ApiUrls } from "../../constants";
-import { dataT } from "../../model";
-import Row from "./row/Row";
+import { Data } from "../../model";
+import Row from "../row/Row";
 import "./table.scss";
 
 interface PropsI {
@@ -11,7 +10,7 @@ interface PropsI {
 }
 
 const Table: FC<PropsI> = ({ type }) => {
-  const [data, setData] = useState<Array<dataT>>([]);
+  const [data, setData] = useState<Array<Data>>([]);
 
   useEffect(() => {
     getData(ApiUrls[type]).then(({ data }) => {
@@ -25,8 +24,8 @@ const Table: FC<PropsI> = ({ type }) => {
         <Row head={true} data={Object.keys(data[0])} />
       </thead>
       <tbody>
-        {data.map((item) => (
-          <Row head={false} data={item} key={v4()} />
+        {data.map((item, index) => (
+          <Row head={false} data={item} key={index} />
         ))}
       </tbody>
     </table>

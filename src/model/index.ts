@@ -1,3 +1,2 @@
-export type dataT = Array<unknown>;
-
-export type dataStructureT = string | number | object;
+export type Data = Array<unknown>;
+export type DataStructure = string | number | object;

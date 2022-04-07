@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import { dataStructureT } from "../../../model";
-import ConcateKeysWithValues from "../../../common/components/concateKeysWithValues/ConcateKeysWithValues";
+import { DataStructure } from "../../model";
+import ConcateKeysWithValues from "../concateKeysWithValues/ConcateKeysWithValues";
 
 interface PropsI {
   head: boolean;
-  info: dataStructureT;
+  info: DataStructure;
 }
 
 const Column: FC<PropsI> = ({ head, info }) => {

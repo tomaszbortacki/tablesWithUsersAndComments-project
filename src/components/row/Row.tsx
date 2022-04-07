@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { v4 } from "uuid";
-import { dataStructureT } from "../../../model";
+import { DataStructure } from "../../model";
 import Column from "../column/Column";
 
 interface PropsI {
@@ -9,7 +8,7 @@ interface PropsI {
 }
 
 const Row: FC<PropsI> = ({ head, data }) => {
-  const [info, setInfo] = useState<Array<dataStructureT>>([]);
+  const [info, setInfo] = useState<Array<DataStructure>>([]);
 
   useEffect(() => {
     setInfo(() => (Array.isArray(data) ? data : Object.values(data)));
@@ -17,8 +16,8 @@ const Row: FC<PropsI> = ({ head, data }) => {
 
   return (
     <tr>
-      {info.map((info) => (
-        <Column head={head} info={info} key={v4()} />
+      {info.map((info, index) => (
+        <Column head={head} info={info} key={index} />
       ))}
     </tr>
   );

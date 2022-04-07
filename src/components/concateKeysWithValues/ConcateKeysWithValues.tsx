@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { v4 } from "uuid";
-import { dataStructureT } from "../../../model";
+import { DataStructure } from "../../model";
 
 interface PropsI {
-  data: Array<Array<dataStructureT>>;
+  data: Array<Array<DataStructure>>;
 }
 
 const enum Entry {
@@ -14,8 +13,8 @@ const enum Entry {
 const ConcateKeysWithValues: FC<PropsI> = ({ data }) => {
   return data.length ? (
     <ul>
-      {data.map((entry) => (
-        <li key={v4()}>
+      {data.map((entry, index) => (
+        <li key={index}>
           <strong>{entry[Entry.KEY]}:&nbsp;</strong>
           {typeof entry[Entry.VALUE] === "object" ? (
             <ConcateKeysWithValues data={Object.entries(entry[Entry.VALUE])} />

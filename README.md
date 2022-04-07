@@ -8,7 +8,6 @@ Fetching data from different locations and create table with data, that comes fr
 - React
 - TypeScript
 - SCSS
-- uuid
 
 ## Created by
 
