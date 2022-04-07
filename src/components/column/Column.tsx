@@ -1,14 +1,16 @@
-import React, { FC } from "react";
+import React from "react";
 import { DataStructure } from "../../model";
-import ConcateKeysWithValues from "../concateKeysWithValues/ConcateKeysWithValues";
+import ConcatenatedList from "../concatenatedList/ConcatenatedList";
 
-interface PropsI {
+interface Props {
   head: boolean;
   info: DataStructure;
 }
 
-const Column: FC<PropsI> = ({ head, info }) => {
-  return head ? <th>{info}</th> : <td>{typeof info === "object" ? <ConcateKeysWithValues data={Object.entries(info)} /> : info}</td>;
+const Column = ({ head, info }: Props) => {
+  if (!info) return head ? <th></th> : <td></td>;
+
+  return head ? <th>{info}</th> : <td>{typeof info === "object" ? <ConcatenatedList data={Object.entries(info)} /> : info}</td>;
 };
 
 export default Column;

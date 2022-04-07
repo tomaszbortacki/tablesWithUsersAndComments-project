@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { DataStructure } from "../../model";
 
-interface PropsI {
+interface Props {
   data: Array<Array<DataStructure>>;
 }
 
@@ -10,16 +10,20 @@ const enum Entry {
   VALUE,
 }
 
-const ConcateKeysWithValues: FC<PropsI> = ({ data }) => {
+const ConcatenatedList = ({ data }: Props) => {
   return data.length ? (
     <ul>
       {data.map((entry, index) => (
         <li key={index}>
           <strong>{entry[Entry.KEY]}:&nbsp;</strong>
-          {typeof entry[Entry.VALUE] === "object" ? (
-            <ConcateKeysWithValues data={Object.entries(entry[Entry.VALUE])} />
+          {entry[Entry.VALUE] ? (
+            typeof entry[Entry.VALUE] === "object" ? (
+              <ConcatenatedList data={Object.entries(entry[Entry.VALUE])} />
+            ) : (
+              entry[Entry.VALUE]
+            )
           ) : (
-            entry[Entry.VALUE]
+            ""
           )}
         </li>
       ))}
@@ -27,4 +31,4 @@ const ConcateKeysWithValues: FC<PropsI> = ({ data }) => {
   ) : null;
 };
 
-export default ConcateKeysWithValues;
+export default ConcatenatedList;

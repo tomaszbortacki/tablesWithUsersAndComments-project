@@ -1,31 +1,21 @@
-import React, { FC, useEffect, useState } from "react";
-import { getData } from "../../api";
-import { ApiUrls } from "../../constants";
+import React from "react";
 import { Data } from "../../model";
 import Row from "../row/Row";
-import "./table.scss";
+import { table } from "./Table.module.scss";
 
-interface PropsI {
-  type: keyof typeof ApiUrls;
+interface Props {
+  data: Data;
 }
 
-const Table: FC<PropsI> = ({ type }) => {
-  const [data, setData] = useState<Array<Data>>([]);
-
-  useEffect(() => {
-    getData(ApiUrls[type]).then(({ data }) => {
-      setData(() => data);
-    });
-  }, []);
-
+const Table = ({ data }: Props) => {
   return data.length ? (
-    <table className="table">
+    <table className={table}>
       <thead>
         <Row head={true} data={Object.keys(data[0])} />
       </thead>
       <tbody>
         {data.map((item, index) => (
-          <Row head={false} data={item} key={index} />
+          <Row head={false} data={item} key={item?.id && typeof item.id === "number" ? item.id : index} />
         ))}
       </tbody>
     </table>

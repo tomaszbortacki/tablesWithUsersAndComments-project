@@ -1,18 +1,18 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataStructure } from "../../model";
 import Column from "../column/Column";
 
-interface PropsI {
+interface Props {
   head: boolean;
   data: Array<string> | object;
 }
 
-const Row: FC<PropsI> = ({ head, data }) => {
+const Row = ({ head, data }: Props) => {
   const [info, setInfo] = useState<Array<DataStructure>>([]);
 
   useEffect(() => {
     setInfo(() => (Array.isArray(data) ? data : Object.values(data)));
-  }, []);
+  }, [data]);
 
   return (
     <tr>
