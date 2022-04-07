@@ -10,7 +10,7 @@ interface Props {
 const Column = ({ head, info }: Props) => {
   if (!info) return head ? <th></th> : <td></td>;
 
-  return head ? <th>{info}</th> : <td>{typeof info === "object" ? <ConcatenatedList data={Object.entries(info)} /> : info}</td>;
+  return head ? <th>{info}</th> : <td>{typeof info === "object" ? <ConcatenatedList data={info} /> : info}</td>;
 };
 
 export default Column;

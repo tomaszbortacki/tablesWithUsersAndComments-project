@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { DataStructure } from "../../model";
 
 interface Props {
-  data: Array<Array<DataStructure>>;
+  data: object;
 }
 
 const enum Entry {
@@ -11,10 +11,11 @@ const enum Entry {
 }
 
 const ConcatenatedList = ({ data }: Props) => {
-  return data.length ? (
+  return data ? (
     <ul>
-      {data.map((entry, index) => (
+      {Object.entries(data).map((entry, index) => (
         <li key={index}>
+          {() => console.log(entry)}
           <strong>{entry[Entry.KEY]}:&nbsp;</strong>
           {entry[Entry.VALUE] ? (
             typeof entry[Entry.VALUE] === "object" ? (
