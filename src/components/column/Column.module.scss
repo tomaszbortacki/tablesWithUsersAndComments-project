@@ -1,0 +1,12 @@
+@use "../../styles/colors" as colors;
+
+.column {
+  padding: 0.5rem;
+
+  &__head {
+    @extend .column;
+    position: sticky;
+    top: 0;
+    background-color: colors.$darkenBlue;
+  }
+}

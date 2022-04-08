@@ -1,11 +1,11 @@
 import React from "react";
 import { useTableContext } from "../../contexts/TableContextProvider";
-import { loading } from "./Loading.module.scss";
+import styles from "./Loading.module.scss";
 
 const Loading = () => {
-  const { loading: tableLoading } = useTableContext();
+  const { loading } = useTableContext();
 
-  return tableLoading ? <div className={loading}></div> : null;
+  return loading ? <div className={styles.loading}></div> : null;
 };
 
 export default Loading;

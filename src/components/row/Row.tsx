@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataStructure } from "../../model";
 import Column from "../column/Column";
+import styles from "./Row.module.scss";
 
 interface Props {
   head: boolean;
@@ -15,7 +16,7 @@ const Row = ({ head, data }: Props) => {
   }, [data]);
 
   return (
-    <tr>
+    <tr className={styles.row}>
       {info.map((info, index) => (
         <Column head={head} info={info} key={index} />
       ))}

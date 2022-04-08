@@ -1,0 +1,7 @@
+@use "../../styles/colors" as colors;
+
+.row {
+  &:nth-child(even) {
+    background-color: darken(colors.$backgroundColor, 1%);
+  }
+}

@@ -1,17 +1,17 @@
 import React from "react";
-import "./app.scss";
-import TableQuery from "./components/tableQuery/TableQuery";
-import { Endpoints } from "./constants";
 import TableContextProvider from "./contexts/TableContextProvider";
+import styles from "./App.module.scss";
+import { Endpoints } from "./constants";
+import TableWrapper from "./components/tableWrapper/TableWrapper";
 
 const App = () => {
   return (
-    <section className="app">
+    <section className={styles.app}>
       <TableContextProvider endpoint={Endpoints.COMMENTS}>
-        <TableQuery />
+        <TableWrapper />
       </TableContextProvider>
       <TableContextProvider endpoint={Endpoints.USERS}>
-        <TableQuery />
+        <TableWrapper />
       </TableContextProvider>
     </section>
   );
