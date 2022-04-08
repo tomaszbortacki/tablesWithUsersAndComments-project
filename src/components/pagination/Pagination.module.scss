@@ -1,0 +1,19 @@
+@use "../../styles/colors" as colors;
+
+.pagination {
+  button {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+
+    &:first-child {
+      margin-right: 0.3rem;
+    }
+
+    &:hover {
+      background-color: colors.$amethyst;
+    }
+  }
+}

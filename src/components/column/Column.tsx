@@ -9,12 +9,10 @@ interface Props {
 }
 
 const Column = ({ head, info }: Props) => {
-  if (!info) return head ? <th className={styles.column__head}></th> : <td className={styles.column}></td>;
-
   return head ? (
     <th className={styles.column__head}>{info}</th>
   ) : (
-    <td className={styles.column}>{typeof info === "object" ? <ConcatenatedList data={info} /> : info}</td>
+    <td className={styles.column}>{info ? typeof info === "object" ? <ConcatenatedList data={info} /> : info : null}</td>
   );
 };
 
