@@ -12,8 +12,8 @@ const Table = () => {
         <Row head={true} data={Object.keys(data[0])} />
       </thead>
       <tbody>
-        {data.map((item, index) => (
-          <Row head={false} data={item} key={index} />
+        {data.map((item) => (
+          <Row head={false} data={item} key={item.id as number} />
         ))}
       </tbody>
     </table>
