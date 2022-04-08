@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { DataStructure } from "../../model";
 
 interface Props {
-  data: object;
+  data: Record<string, DataStructure>;
 }
 
 const enum Entry {
@@ -11,20 +11,18 @@ const enum Entry {
 }
 
 const ConcatenatedList = ({ data }: Props) => {
-  return !data ? (
+  return data ? (
     <ul>
       {Object.entries(data).map((entry, index) => (
         <li key={index}>
           <strong>{entry[Entry.KEY]}:&nbsp;</strong>
-          {/* {entry[Entry.VALUE] ? (
+          {entry[Entry.VALUE] ? (
             typeof entry[Entry.VALUE] === "object" ? (
-              <ConcatenatedList data={Object.entries(entry[Entry.VALUE])} />
+              <ConcatenatedList data={entry[Entry.VALUE] as Record<string, DataStructure>} />
             ) : (
               entry[Entry.VALUE]
             )
-          ) : (
-            ""
-          )} */}
+          ) : null}
         </li>
       ))}
     </ul>
