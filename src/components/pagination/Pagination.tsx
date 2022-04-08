@@ -1,14 +1,13 @@
 import React from "react";
+import { useTableContext } from "../../contexts/TableContextProvider";
 
-interface Props {
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-}
+const Pagination = () => {
+  const { setNextPage } = useTableContext();
 
-const Pagination = ({ setPage }: Props) => {
   return (
     <section>
-      <button onClick={() => setPage((prevState) => (prevState > 1 ? prevState - 1 : 1))}>Prev</button>
-      <button onClick={() => setPage((prevState) => prevState + 1)}>Next</button>
+      <button onClick={() => setNextPage(-1)}>Prev</button>
+      <button onClick={() => setNextPage(1)}>Next</button>
     </section>
   );
 };

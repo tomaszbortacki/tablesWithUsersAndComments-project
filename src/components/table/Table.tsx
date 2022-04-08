@@ -1,13 +1,11 @@
 import React from "react";
-import { Data } from "../../model";
+import { useTableContext } from "../../contexts/TableContextProvider";
 import Row from "../row/Row";
 import { table } from "./Table.module.scss";
 
-interface Props {
-  data: Data;
-}
+const Table = () => {
+  const { data } = useTableContext();
 
-const Table = ({ data }: Props) => {
   return data.length ? (
     <table className={table}>
       <thead>
@@ -15,7 +13,7 @@ const Table = ({ data }: Props) => {
       </thead>
       <tbody>
         {data.map((item, index) => (
-          <Row head={false} data={item} key={item?.id && typeof item.id === "number" ? item.id : index} />
+          <Row head={false} data={item} key={index} />
         ))}
       </tbody>
     </table>
