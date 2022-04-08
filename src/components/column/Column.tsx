@@ -12,7 +12,9 @@ const Column = ({ head, info }: Props) => {
   return head ? (
     <th className={styles.column__head}>{info}</th>
   ) : (
-    <td className={styles.column}>{info ? typeof info === "object" ? <ConcatenatedList data={info} /> : info : null}</td>
+    <td className={styles.column}>
+      {info ? typeof info === "object" ? <ConcatenatedList data={info as Record<string, DataStructure>} /> : info : null}
+    </td>
   );
 };
 
